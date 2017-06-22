@@ -1,0 +1,26 @@
+<table class="table table-striped table-hover" id="{{ __SELF__.id }}"
+       data-request-data="list_id: '{{ __SELF__.id }}'">
+    {% for item in __SELF__.items %}
+        <tr>
+            <td>
+                {{ item[__SELF__.field] }}
+            </td>
+            <td align="right">
+                <a href="{{ item.crudUpdatePage }}"
+                   class="btn btn-sm btn-default">
+                    edit
+                </a>
+                <button data-request="onDelete"
+                        data-request-data="id: {{ item.id }}"
+                        data-request-confirm="Are you sure ?"
+                        class="btn btn-sm btn-default">
+                    delete
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% if __SELF__.createPageUrl is not empty %}
+    <a href="{{ __SELF__.createPageUrl }}" class="btn btn-primary">New item</a>
+{% endif %}

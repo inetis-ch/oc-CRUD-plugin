@@ -1,0 +1,15 @@
+
+<form role="form"
+      data-request="{{ __SELF__ }}::onUpdate">
+
+    {{ __SELF__.form.formRender()|raw }}
+
+    <div class="form-group">
+        <button data-hotkey="ctrl+s, cmd+s"
+                class="btn btn-primary"
+                type="submit"
+                value="register">
+            Update
+        </button>
+    </div>
+</form>
