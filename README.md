@@ -1,51 +1,52 @@
-# Frontend CRUD plugin 
-The idea of this plugin is to easily create CRUD features for existing backend model controller.
+# About
 
-> This plugin is not ready for production. You need to add more security checks before implement it on your site.
+Sample OctoberCMS plugin to demonstrate creating CRUD features for existing backend models/controllers within the frontend.
+
+>**NOTE:** This plugin is NOT production ready. Additional security checks and verification steps MUST be added before implementing on a production site.
 
 ## Demo
 ![CRUD demo](https://user-images.githubusercontent.com/12028540/27440023-be556244-5769-11e7-8d04-1540b822d66c.gif)
 
 ## Usage
-This plugin work with 3 component : 
+This plugin demonstrates the following three components:
 
-### List
-Display the list of items and delete items when click on delete button.
-
-Property | Description
---- | :---
-Model | The full name of the model you want use (with namespace) eg:&nbsp;`Dev\Plugin\Models\User`
-Field to display | Name of the field you want display in the list eg:&nbsp;title  
-Page Edit Item | The page that contain the Update component (used by edit buttons)
-Page New Item | The page that contain the Create component (used by New item button)
-
-### Update
-Display an edit form
+### crudList
+Displays a list of items and adds ability to delete items when clicking on the delete button.
 
 Property | Description | Example
 --- | :--- | ---
-Model | The full name of the model you want use (with namespace) | `Dev\Plugin\Models\User`
-Controller | The full name of your the controller you want use (with namespace) | `Dev\Plugin\Controllers\Users`
-Form context | You can choose the context you want use (see [Backend forms > Field options > Context](https://octobercms.com/docs/backend/forms#form-field-options)) | frontend
-ID | Primary key of the item you want edit
-Form config (optional) | Override the default model configuration file (`fields.yaml`) defined in the controller (`config_form.yaml`) (see [Backend forms > Defining form fields](https://octobercms.com/docs/backend/forms#form-fields) | `$/dev/plugin/models/user/fields.yaml`
-Success page | Page to redirect user after model correctly saved
+Model | The full class name of the model you want to use (with namespace) | `\Dev\Plugin\Models\User`
+Field to display | The name of the property you want to display in the list | `title`
+Page Edit Item | The page that contains the crudUpdate component (used by the Edit buttons) | `update.htm`
+Page New Item | The page that contain the crudCreate component (used by the New item button) | `create.htm`
 
-### Create
-Display a create form
+### crudUpdate
+Displays an edit form.
 
 Property | Description | Example
 --- | :--- | ---
-Model | The full name of the model you want use (with namespace) | `Dev\Plugin\Models\User`
-Controller | The full name of your the controller you want use (with namespace) | `Dev\Plugin\Controllers\Users`
-Form context | You can choose the context you want use (see [Backend forms > Field options > Context](https://octobercms.com/docs/backend/forms#form-field-options)) | frontend
-ID | Primary key of the item you want edit
-Form config (optional) | Override the default model configuration file (`fields.yaml`) defined in the controller (`config_form.yaml`) (see [Backend forms > Defining form fields](https://octobercms.com/docs/backend/forms#form-fields) | `$/dev/plugin/models/user/fields.yaml`
-Success page | Page to redirect user after model correctly saved
+Model | The full class name of the model you want to use (with namespace) | `Dev\Plugin\Models\User`
+Controller | The full class name of the controller you want to use (with namespace) | `Dev\Plugin\Controllers\Users`
+Form context | The context you want to use (see [Backend forms > Field options > Context](https://octobercms.com/docs/backend/forms#form-field-options)) | `frontend`
+ID | The primary key of the item you want to edit (can be a URL parameter) | `{{ :id }}`
+Form config (optional) | Override the default form configuration file (`fields.yaml`) defined in the controller (`config_form.yaml`) (see [Backend forms > Defining form fields](https://octobercms.com/docs/backend/forms#form-fields) | `$/dev/plugin/models/user/fields.yaml`
+Success page | The Page to redirect the user after model has correctly saved | `update.htm`
 
-## Limitations
-- Backend widget are not supported (DOM is generated but without any JS/CSS) - PR are welcome
-- No access rules, everybody can update your models
+### crudCreate
+Displays a create form
+
+Property | Description | Example
+--- | :--- | ---
+Model | The full class name of the model you want to use (with namespace) | `Dev\Plugin\Models\User`
+Controller | The full class name of the controller you want to use (with namespace) | `Dev\Plugin\Controllers\Users`
+Form context | The context you want to use (see [Backend forms > Field options > Context](https://octobercms.com/docs/backend/forms#form-field-options)) | `frontend`
+ID | Primary key of the item you want edit
+Form config (optional) | Override the default form configuration file (`fields.yaml`) defined in the controller (`config_form.yaml`) (see [Backend forms > Defining form fields](https://octobercms.com/docs/backend/forms#form-fields) | `$/dev/plugin/models/user/fields.yaml`
+Success page | The Page to redirect the user after model has correctly saved | `update.htm`
+
+## Current Limitations
+- Backend widget are not supported (the DOM is generated but without any JS/CSS) - Any PRs are welcome
+- No access validation, anybody with access to the routes that these components live on can update your models without authorization or validation.
 
 ## Author
 inetis is a webdesign agency in Vufflens-la-Ville, Switzerland. We love coding and creating powerful apps and sites  [see our website](https://inetis.ch).
